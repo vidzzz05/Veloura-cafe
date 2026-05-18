@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Veloura Café | Luxury Coffee Experience</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:
+  radial-gradient(circle at top left,#2a1a0f,transparent 30%),
+  radial-gradient(circle at bottom right,#3d2415,transparent 30%),
+  #0b0b0b;
+
+  color:white;
+  overflow-x:hidden;
+}
+
+/* BLOBS */
+
+.blob{
+  position:fixed;
+  width:300px;
+  height:300px;
+  background:#ffb347;
+  filter:blur(140px);
+  opacity:0.15;
+  z-index:-1;
+  animation:moveBlob 10s infinite alternate;
+}
+
+.blob1{
+  top:-100px;
+  left:-100px;
+}
+
+.blob2{
+  bottom:-100px;
+  right:-100px;
+  background:#ff7b54;
+}
+
+@keyframes moveBlob{
+  from{
+    transform:translate(0,0);
+  }
+
+  to{
+    transform:translate(80px,50px);
+  }
+}
+
+/* NAVBAR */
+
+.navbar{
+  position:fixed;
+  top:0;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  padding:18px 70px;
+
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(12px);
+
+  border-bottom:1px solid rgba(255,255,255,0.08);
+
+  z-index:1000;
+}
+
+.logo{
+  font-size:28px;
+  font-weight:700;
+  color:#ffb347;
+  letter-spacing:3px;
+
+  text-shadow:
+  0 0 10px rgba(255,179,71,0.5),
+  0 0 25px rgba(255,179,71,0.3);
+}
+
+.nav-links{
+  display:flex;
+  gap:25px;
+  align-items:center;
+}
+
+.nav-links a{
+  color:white;
+  text-decoration:none;
+  font-size:15px;
+  position:relative;
+  transition:0.3s;
+}
+
+.nav-links a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-5px;
+  width:0;
+  height:2px;
+  background:#ffb347;
+  transition:0.4s;
+}
+
+.nav-links a:hover::after{
+  width:100%;
+}
+
+.btn{
+  background:linear-gradient(135deg,#ffb347,#ffcc70);
+  border:none;
+  padding:12px 22px;
+  border-radius:30px;
+  cursor:pointer;
+  font-weight:600;
+  transition:0.4s;
+}
+
+.btn:hover{
+  transform:translateY(-4px);
+  box-shadow:0 10px 30px rgba(255,179,71,0.4);
+}
+
+/* HERO */
+
+.hero{
+  height:100vh;
+
+  background:
+  linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.75)),
+  url("https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=1400")
+  center/cover no-repeat;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+
+  position:relative;
+}
+
+.hero-content{
+  max-width:800px;
+  padding:20px;
+}
+
+.hero h1{
+  font-size:90px;
+  font-weight:800;
+  letter-spacing:5px;
+
+  animation:fadeUp 1s ease;
+}
+
+.hero p{
+  margin:20px 0;
+  font-size:18px;
+  opacity:0.8;
+
+  animation:fadeUp 1.3s ease;
+}
+
+.hero-buttons{
+  margin-top:25px;
+  animation:fadeUp 1.6s ease;
+}
+
+.hero-buttons button{
+  margin:8px;
+}
+
+@keyframes fadeUp{
+
+  from{
+    opacity:0;
+    transform:translateY(40px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* SECTIONS */
+
+section{
+  padding:110px 70px;
+}
+
+.section-title{
+  text-align:center;
+  font-size:45px;
+  margin-bottom:60px;
+}
+
+/* MENU */
+
+.menu-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
+}
+
+.card{
+  background:rgba(255,255,255,0.05);
+
+  border:1px solid rgba(255,255,255,0.08);
+
+  border-radius:20px;
+
+  overflow:hidden;
+
+  transition:0.5s;
+
+  backdrop-filter:blur(12px);
+}
+
+.card:hover{
+  transform:translateY(-12px);
+  box-shadow:0 20px 40px rgba(0,0,0,0.4);
+}
+
+.card img{
+  width:100%;
+  height:230px;
+  object-fit:cover;
+  transition:0.5s;
+}
+
+.card:hover img{
+  transform:scale(1.1);
+}
+
+.card-content{
+  padding:20px;
+}
+
+.card-content h3{
+  margin-bottom:10px;
+}
+
+.card-content p{
+  opacity:0.7;
+  font-size:14px;
+}
+
+/* ABOUT */
+
+.about-container{
+  display:flex;
+  gap:60px;
+  align-items:center;
+}
+
+.about-img{
+  flex:1;
+}
+
+.about-img img{
+  width:100%;
+  border-radius:20px;
+  height:500px;
+  object-fit:cover;
+}
+
+.about-text{
+  flex:1;
+}
+
+.about-text h3{
+  font-size:36px;
+  margin-bottom:20px;
+}
+
+.about-text p{
+  line-height:1.8;
+  opacity:0.8;
+}
+
+/* FEATURES */
+
+.features{
+  background:#111;
+}
+
+.features-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:25px;
+}
+
+.feature-card{
+  background:#1b1b1b;
+  padding:30px;
+  border-radius:20px;
+  text-align:center;
+  transition:0.4s;
+}
+
+.feature-card:hover{
+  transform:translateY(-10px);
+}
+
+.feature-card h3{
+  margin:15px 0;
+}
+
+/* GALLERY */
+
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
+
+.gallery-item{
+  overflow:hidden;
+  border-radius:20px;
+}
+
+.gallery-item img{
+  width:100%;
+  height:260px;
+  object-fit:cover;
+  transition:0.5s;
+}
+
+.gallery-item:hover img{
+  transform:scale(1.15);
+}
+
+/* REVIEWS */
+
+.reviews-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:25px;
+}
+
+.review-card{
+  background:#1b1b1b;
+  padding:30px;
+  border-radius:20px;
+}
+
+.review-card p{
+  opacity:0.8;
+  margin-bottom:20px;
+}
+
+.review-card span{
+  color:gold;
+}
+
+/* CONTACT */
+
+.contact-container{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:40px;
+}
+
+.contact-form{
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+}
+
+.contact-form input,
+.contact-form textarea{
+  padding:15px;
+  border:none;
+  outline:none;
+  border-radius:12px;
+  background:#1c1c1c;
+  color:white;
+}
+
+.contact-form textarea{
+  height:140px;
+  resize:none;
+}
+
+/* FOOTER */
+
+footer{
+  background:#050505;
+  padding:50px 70px;
+  text-align:center;
+  border-top:1px solid #222;
+}
+
+footer p{
+  opacity:0.5;
+}
+
+/* WHATSAPP */
+
+.whatsapp{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+
+  background:#25D366;
+  color:white;
+
+  padding:14px 18px;
+
+  border-radius:50px;
+
+  text-decoration:none;
+
+  font-weight:600;
+
+  z-index:1000;
+}
+
+/* SCROLL REVEAL */
+
+.reveal{
+  opacity:0;
+  transform:translateY(60px);
+  transition:1s;
+}
+
+.reveal.active{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+  .navbar{
+    padding:18px 20px;
+  }
+
+  .nav-links{
+    display:none;
+  }
+
+  .hero h1{
+    font-size:55px;
+  }
+
+  section{
+    padding:90px 20px;
+  }
+
+  .about-container{
+    flex-direction:column;
+  }
+.nav-links a:active{
+  color:#ffb347;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+<div class="logo">VELOURA</div>  
+
+  <div class="nav-links">
+    <a href="#home">Home</a>
+    <a href="#menu">Menu</a>
+    <a href="#about">About</a>
+    <a href="#features">Why Us</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#contact">Contact</a>
+
+    <button class="btn" onclick="openBooking()">
+      Book Table
+    </button>
+  </div>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+  <div class="hero-content">
+
+    <h1>Veloura Café</h1>
+
+<p>
+  Luxury coffee, warm interiors, handcrafted desserts,
+  and unforgettable moments.
+</p>
+
+    
+
+  </div>
+
+</section>
+
+<!-- MENU -->
+
+<section id="menu" class="reveal">
+
+  <h2 class="section-title">Popular Menu</h2>
+
+  <div class="menu-grid">
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1200">
+      <div class="card-content">
+        <h3>Cappuccino</h3>
+        <p>Rich espresso blended with silky milk foam.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=1200">
+      <div class="card-content">
+        <h3>Iced Latte</h3>
+        <p>Refreshing cold coffee crafted with premium beans.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=1200">
+      <div class="card-content">
+        <h3>Chocolate Cake</h3>
+        <p>Soft layered dessert topped with dark chocolate.</p>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section id="about" class="reveal">
+
+  <h2 class="section-title">About Us</h2>
+
+  <div class="about-container">
+
+    <div class="about-img">
+      <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?q=80&w=1200">
+    </div>
+
+    <div class="about-text">
+
+<h3>Crafted for comfort, conversations, and coffee lovers.</h3>
+
+<p>
+  Veloura Café blends luxury interiors, handcrafted beverages,
+  and modern café culture into one beautiful experience.
+  From slow mornings to late-night conversations,
+  every corner is designed to feel warm, aesthetic, and inviting.
+</p>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- FEATURES -->
+
+<section id="features" class="features reveal">
+
+  <h2 class="section-title">Why Choose Us</h2>
+
+  <div class="features-grid">
+
+    <div class="feature-card">
+      <h3>☕ Premium Coffee</h3>
+      <p>Freshly brewed coffee made with top-quality beans.</p>
+    </div>
+
+    <div class="feature-card">
+      <h3>🎵 Cozy Ambience</h3>
+      <p>Warm interiors and relaxing vibes for every mood.</p>
+    </div>
+
+    <div class="feature-card">
+      <h3>📶 Free WiFi</h3>
+      <p>Perfect space for work, meetings, and study sessions.</p>
+    </div>
+
+    <div class="feature-card">
+      <h3>🍰 Fresh Desserts</h3>
+      <p>Delicious handcrafted desserts baked daily.</p>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- GALLERY -->
+
+<section id="gallery" class="reveal">
+
+  <h2 class="section-title">Gallery</h2>
+
+  <div class="gallery-grid">
+
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1200">
+    </div>
+
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?q=80&w=1200">
+    </div>
+
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1200">
+    </div>
+
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1200">
+    </div>
+
+  </div>
+
+</section>
+
+<!-- REVIEWS -->
+
+<section id="reviews" class="reveal">
+
+  <h2 class="section-title">What People Say</h2>
+
+  <div class="reviews-grid">
+
+    <div class="review-card">
+      <p>
+        "The ambience is absolutely beautiful.
+        Easily one of the best cafés in Chandigarh."
+      </p>
+
+      <h4>— Aanya Sharma</h4>
+
+      <span>★★★★★</span>
+    </div>
+
+    <div class="review-card">
+      <p>
+        "Amazing coffee quality and aesthetic interiors.
+        Perfect for work and coffee dates."
+      </p>
+
+      <h4>— Rohan Mehta</h4>
+
+      <span>★★★★★</span>
+    </div>
+
+    <div class="review-card">
+      <p>
+        "Loved the desserts and peaceful vibe.
+        Highly recommended."
+      </p>
+
+      <h4>— Simran Kaur</h4>
+
+      <span>★★★★★</span>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact" class="reveal">
+
+  <h2 class="section-title">Contact Us</h2>
+
+  <div class="contact-container">
+
+    <div>
+
+      <h3 style="margin-bottom:20px;">Visit Veloura cafe</h3>
+
+     <p style="opacity:0.8; line-height:2;">
+📍 Luxury Coffee Lounge <br>
+📞 +00 00000 00000 <br>
+✉ hello@veloura.com
+</p>
+
+    </div>
+
+    <form class="contact-form">
+
+      <input type="text" placeholder="Your Name">
+
+      <input type="email" placeholder="Your Email">
+
+      <textarea placeholder="Your Message"></textarea>
+
+      <button class="btn">
+        Send Message
+      </button>
+
+    </form>
+
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+  <h2 style="margin-bottom:10px;">VELOURA CAFÉ</h2>
+
+  <p>
+    Crafted with coffee, comfort, and premium experiences.
+  </p>
+
+  <br>
+
+  <p>
+   © 2026 Veloura Café — Fictional Portfolio Project.
+  </p>
+<p style="margin-top:12px; font-size:13px; opacity:0.45;">
+  This website is a fictional portfolio project created for educational and showcase purposes.
+</p>
+</footer>
+
+
+
+<script>
+
+/* BOOKING */
+
+function openBooking(){
+
+  const msg =
+  "Hi! I want to book a table at Veloura Café.";
+
+  window.open(
+    "https://wa.me/0000000000?text=" +
+    encodeURIComponent(msg)
+  );
+
+}
+
+/* SCROLL REVEAL */
+
+window.addEventListener("scroll", reveal);
+
+function reveal(){
+
+  const reveals =
+  document.querySelectorAll(".reveal");
+
+  for(let i = 0; i < reveals.length; i++){
+
+    const windowHeight = window.innerHeight;
+
+    const revealTop =
+    reveals[i].getBoundingClientRect().top;
+
+    const revealPoint = 100;
+
+    if(revealTop < windowHeight - revealPoint){
+
+      reveals[i].classList.add("active");
+
+    }
+
+  }
+
+}
+
+reveal();
+document.querySelector(".contact-form").addEventListener("submit", function(e){
+  e.preventDefault();
+  alert("Message sent successfully!");
+});
+</script>
+
+</body>
+</html>
